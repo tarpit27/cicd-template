@@ -30,8 +30,16 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        environment: deploy
+      - name: Run a multi-line script        
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment: deploy
+    steps:
+      - name: Deploy script
+        run: echo "Deployed"
+  
